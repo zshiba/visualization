@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+    <title>Squarified Treemap by using Processing</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      .container {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      canvas {
+        border-style: double;
+      }
+      footer {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Squarified Treemap by using Processing</h1>
+      <p>
+        Squarified Treemap was introduced in the paper "Bruls, Mark, Kees Huizing, and Jarke J. Van Wijk. <i>Squarified treemaps</i>. Springer Vienna, 2000." <a href="http://scholar.google.com/scholar?q=Squarified+Treemaps">Link to Google Scholar</a>
+      </p>
+      <hr />
+      <ul>
+        <li>Left click to zoom in.</li>
+        <li>Right click to zoom out.</li>
+      </ul>
+
+      <canvas data-processing-sources="src/squarified_treemap/invoker.pde src/squarified_treemap/Viewport.pde src/squarified_treemap/SquarifiedTreemap.pde src/squarified_treemap/Node.pde"></canvas>
+
+      <h2>Processing Source Code</h2>
+      <p>
+        The Processing source code is available at <a href="https://github.com/zshiba/visualization">https://github.com/zshiba/visualization</a>.
+      </p>
+      <hr />
+
+      <footer>
+        <p>
+          &copy zshiba (<a href="https://github.com/zshiba">https://github.com/zshiba</a>), 2014
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
