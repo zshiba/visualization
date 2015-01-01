@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+    <title>Parallel Coordinates by using Processing</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      .container {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      canvas {
+        border-style: double;
+      }
+      footer {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Parallel Coordinates by using Processing</h1>
+      <p>
+        <a href="http://en.wikipedia.org/wiki/Parallel_coordinates">Parallel coordinates on Wikipedia</a>
+      </p>
+      <p>
+        Acknowledgement:<br />
+        Dataset is from <a href="http://archive.ics.uci.edu/ml/datasets/Iris">UCI Machine Learning Repository: Iris Data Set</a>.
+      </p>
+      <hr />
+      <ul>
+        <li>Mouseover to a line to show its feature values.</li>
+        <li>Click on a feature name to select.</li>
+        <li>Move a knob to change the range.</li>
+      </ul>
+
+      <canvas data-processing-sources="src/parallel_coordinates/invoker.pde src/parallel_coordinates/Viewport.pde src/parallel_coordinates/ParallelCoordinatesView.pde src/parallel_coordinates/Axis.pde src/parallel_coordinates/Sample.pde"></canvas>
+
+      <h2>Processing Source Code</h2>
+      <p>
+        The Processing source code is available at <a href="https://github.com/zshiba/visualization">https://github.com/zshiba/visualization</a>.
+      </p>
+      <hr />
+
+      <footer>
+        <p>
+          &copy zshiba (<a href="https://github.com/zshiba">https://github.com/zshiba</a>), 2014
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
