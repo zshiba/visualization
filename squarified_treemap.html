@@ -28,6 +28,9 @@
       <p>
         Squarified Treemap was introduced in the paper "Bruls, Mark, Kees Huizing, and Jarke J. Van Wijk. <i>Squarified treemaps</i>. Springer Vienna, 2000." <a href="http://scholar.google.com/scholar?q=Squarified+Treemaps">Link to Google Scholar</a>
       </p>
+      <p>
+        Squarified Treemap is one way to visualize <b>hierarchical data</b>.
+      </p>
       <hr />
       <ul>
         <li>Left click to zoom in.</li>
@@ -35,6 +38,49 @@
       </ul>
 
       <canvas data-processing-sources="src/squarified_treemap/invoker.pde src/squarified_treemap/Viewport.pde src/squarified_treemap/SquarifiedTreemap.pde src/squarified_treemap/Node.pde"></canvas>
+
+      <p>
+      The hierarchy of the input data:<br />
+<pre>
+0
+|-1
+| |-11
+|
+|-2
+| |-21
+| |-22
+|
+|-3
+| |-31
+| |-32
+| |-33
+|
+|-4
+| |-41
+| |-42
+| |-43
+| |-44
+|
+|-5
+| |-51
+| |-52
+| |-53
+| |-54
+| |-55
+|
+|-6
+  |-61
+  | |-611
+  | |-612
+  | |-613
+  |
+  |-62
+  |-63
+  |-64
+  |-65
+  |-66
+</pre>
+      </p>
 
       <h2>Processing Source Code</h2>
       <p>
