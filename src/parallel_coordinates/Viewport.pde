@@ -50,25 +50,25 @@ public class Viewport{
     this.isHighlighted = false;
   }
 
-  public void getX(){
+  public float getX(){
     return this.viewX;
   }
-  public void getY(){
+  public float getY(){
     return this.viewY;
   }
-  public void getWidth(){
+  public float getWidth(){
     return this.viewWidth;
   }
-  public void getHeight(){
+  public float getHeight(){
     return this.viewHeight;
   }
-  public void getCenterX(){
+  public float getCenterX(){
     return this.viewCenterX;
   }
-  public void getCenterY(){
+  public float getCenterY(){
     return this.viewCenterY;
   }
-  public void isHighlighted(){
+  public boolean isHighlighted(){
     return this.isHighlighted;
   }
   public boolean isIntersectingWith(int x, int y){
