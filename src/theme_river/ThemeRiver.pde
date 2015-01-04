@@ -1,7 +1,6 @@
 public class ThemeRiver extends Viewport{
 
-  //make this static later in .js
-  private final color[] DEFAULT_COLORS = {color(107, 110, 207),
+  private static final color[] DEFAULT_COLORS = {color(107, 110, 207),
                                           color(49, 130, 189),
                                           color(140, 162, 82),
                                           color(230, 85, 13),
@@ -58,8 +57,7 @@ public class ThemeRiver extends Viewport{
 
     int row = this.model.getNumberOfValueRow();
     int column = this.model.getNumberOfValueColumn();
-//    float max = FLOAT_MIN;
-    float max = Float.MIN_VALUE;
+    float max = MIN_FLOAT;
     for(int i = 0; i < column; i++){
       float sum = 0.0f;
       for(int j = 0; j < row; j++)

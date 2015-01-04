@@ -1,7 +1,7 @@
 final int CANVAS_WIDTH_DEFAULT  = 720;
 final int CANVAS_HEIGHT_DEFAULT = 480;
 
-final String DATA_FILE_PATH = "data.csv"; //fix file path for .js ver.
+final String DATA_FILE_PATH = "src/theme_river/data.csv";
 /*
  *  data.csv format
  *  By assuming the line index is base 0.
@@ -41,7 +41,7 @@ ThemeRiverModel createThemeRiverModelFrom(String dataFilePath){
     String[] data = splitTokens(trim(lines[i]), ",");
     yTitles[i - 1] = trim(data[0]);
     for(int j = 1; j < data.length; j++)
-      values[i - 1][j - 1] = Float.parseFloat(data[j]);
+      values[i - 1][j - 1] = float(data[j]);
   }
   return new ThemeRiverModel(xTitle, xLabels, yTitles, values);
 }
