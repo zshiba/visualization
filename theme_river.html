@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
-    <title>Force Directed Graph by using Processing</title>
+    <title>ThemeRiver by using Processing</title>
     <style>
       html {
         font-family: sans-serif;
@@ -24,17 +24,16 @@
   </head>
   <body>
     <div class="container">
-      <h1>Force Directed Graph by using Processing</h1>
+      <h1>ThemeRiver by using Processing</h1>
       <p>
-        <a href="http://en.wikipedia.org/wiki/Force-directed_graph_drawing">Force-directed graph drawing (Wikipedia)</a>
+        ThemeRiver was introduced in the paper Havre, Susan, et al. "Themeriver: Visualizing thematic changes in large document collections." <i>Visualization and Computer Graphics, IEEE Transactions on</i> 8.1 (2002): 9-20. <a href="http://scholar.google.com/scholar?q=ThemeRiver">Link to Google Scholar</a>
       </p>
       <p>
-        Force Directed Graph is one way to visualize <b>Node-Link data</b> by using force-directed layout algorithms.<br />
-        The example below is using Coulomb’s Law and Hooke’s Law (and Damping effect) to calculate the kinetic energy of the graph that is to be minimized.
+        ThemeRiver is a variant of line chat, so is one way to visualize time series data.
       </p>
       <hr />
 
-      <canvas data-processing-sources="src/force_directed_graph/invoker.pde src/force_directed_graph/Viewport.pde src/force_directed_graph/ForceDirectedGraph.pde src/force_directed_graph/Node.pde src/force_directed_graph/ControlPanel.pde src/force_directed_graph/Slider.pde"></canvas>
+      <canvas data-processing-sources="src/theme_river/invoker.pde src/theme_river/Viewport.pde src/theme_river/ThemeRiver.pde src/theme_river/ThemeRiverModel.pde src/theme_river/Axis.pde src/theme_river/LegendAxis.pde src/theme_river/River.pde src/theme_river/Vertex.pde"></canvas>
 
       <h2>Processing Source Code</h2>
       <p>
