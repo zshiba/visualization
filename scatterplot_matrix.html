@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.8/processing.min.js"></script>
+    <title>Scatterplot Matrix by using Processing</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      .container {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      canvas {
+        border-style: double;
+      }
+      footer {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Scatterplot Matrix by using Processing</h1>
+      <p>
+        Scatterplot Matrix is one way to visualize <b>multi-dimensional data</b>.
+      </p>
+      <p>
+        Acknowledgement:<br />
+        The dataset is from <a href="http://archive.ics.uci.edu/ml/datasets/Iris">UCI Machine Learning Repository: Iris Data Set</a>.
+      </p>
+      <hr />
+      <ul>
+        <li>Mouseover to a plot to highlight; or</li>
+        <li>Specify a selection area with mouse dragging.</li>
+      </ul>
+
+      <canvas data-processing-sources="src/scatterplot_matrix/invoker.pde src/scatterplot_matrix/Viewport.pde src/scatterplot_matrix/ScatterplotMatrixView.pde src/scatterplot_matrix/ScatterplotView.pde src/scatterplot_matrix/SampleManager.pde src/scatterplot_matrix/Sample.pde"></canvas>
+
+      <h2>Processing Source Code</h2>
+      <p>
+        The Processing source code is available at <a href="https://github.com/zshiba/visualization">https://github.com/zshiba/visualization</a>.
+      </p>
+      <hr />
+
+      <footer>
+        <p>
+          &copy zshiba (<a href="https://github.com/zshiba">https://github.com/zshiba</a>), 2014-2015
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
