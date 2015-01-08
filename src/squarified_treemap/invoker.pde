@@ -85,5 +85,5 @@ Node buildTreeFrom(String shfFilePath){
       break;
     }
   }
-  return root
+  return root;
 }

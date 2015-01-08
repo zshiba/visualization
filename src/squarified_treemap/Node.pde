@@ -95,7 +95,7 @@ public class Node extends Viewport{
   }
 
   //@Override
-  public Stirng toString(){
+  public String toString(){
     int parentID = -1; //ad-hoc
     if(!this.isRoot())
       parentID = this.getParent().getID();

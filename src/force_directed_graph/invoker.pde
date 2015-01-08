@@ -19,9 +19,9 @@ void setup(){
   int canvasHeight = CANVAS_HEIGHT_DEFAULT;
   size(canvasWidth, canvasHeight);
   forceDirectedGraph = createForceDirectedGraphFrom(DATA_FILE_PATH);
-  forceDirectedGraph.set(0.0f, 0.0f, canvasWidth * 0.8f, canvasHeight);
+  forceDirectedGraph.set(0.0f, 0.0f, (float)canvasWidth * 0.8f, (float)canvasHeight);
 //forceDirectedGraph.dumpInformation();
-  controlPanel = new ControlPanel(forceDirectedGraph, forceDirectedGraph.getX() + forceDirectedGraph.getWidth(), 0.0f, canvasWidth * 0.2f, canvasHeight);
+  controlPanel = new ControlPanel(forceDirectedGraph, forceDirectedGraph.getX() + forceDirectedGraph.getWidth(), 0.0f, (float)canvasWidth * 0.2f, (float)canvasHeight);
 }
 
 void draw(){
