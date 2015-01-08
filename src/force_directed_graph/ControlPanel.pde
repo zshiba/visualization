@@ -13,7 +13,7 @@ public class ControlPanel extends Viewport{
   private Slider dampingCoefficientSlider;
   private Slider timeStepSlider;
 
-  public ControlPanel(OnStateChangeListener listener, float viewX, float viewY, float viewWidth, float viewHeight){
+  public ControlPanel(OnValueChangeListener listener, float viewX, float viewY, float viewWidth, float viewHeight){
     super(viewX, viewY, viewWidth, viewHeight);
     this.listener = listener;
 
