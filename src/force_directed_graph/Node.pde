@@ -9,6 +9,8 @@ public class Node{
   private float diameter;
   private float velocityX;
   private float velocityY;
+  private float forceX;
+  private float forceY;
   private boolean isHighlighted;
 
   public Node(int id, float mass){
@@ -19,6 +21,7 @@ public class Node{
 
     this.set(-1.0f, -1.0f, -1.0f); //ad-hoc
     this.setVelocities(0.0f, 0.0f);
+    this.setForceToApply(0.0f, 0.0f);
     this.isHighlighted = false;
   }
 
@@ -37,6 +40,10 @@ public class Node{
   public void setVelocities(float velocityX, float velocityY){
     this.velocityX = velocityX;
     this.velocityY = velocityY;
+  }
+  public void setForceToApply(float forceX, float forceY){
+    this.forceX = forceX;
+    this.forceY = forceY;
   }
 
   public int getID(){
@@ -59,6 +66,12 @@ public class Node{
   }
   public float getVelocityY(){
     return this.velocityY;
+  }
+  public float getForceX(){
+    return this.forceX;
+  }
+  public float getForceY(){
+    return this.forceY;
   }
   public int getSizeOfAdjacents(){
     return this.adjacents.size();
