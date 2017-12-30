@@ -20,6 +20,7 @@ void setup(){
   size(canvasWidth, canvasHeight);
   forceDirectedGraph = createForceDirectedGraphFrom(DATA_FILE_PATH);
   forceDirectedGraph.set(0.0f, 0.0f, (float)canvasWidth * 0.8f, (float)canvasHeight);
+  forceDirectedGraph.initializeNodeLocations();
 //forceDirectedGraph.dumpInformation();
   controlPanel = new ControlPanel(forceDirectedGraph, forceDirectedGraph.getX() + forceDirectedGraph.getWidth(), 0.0f, (float)canvasWidth * 0.2f, (float)canvasHeight);
 }
