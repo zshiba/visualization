@@ -2,9 +2,9 @@ public class ForceDirectedGraph extends Viewport implements ControlPanel.OnValue
 
   private static final float TOTAL_KINETIC_ENERGY_DEFAULT = MAX_FLOAT;
   public static final float SPRING_CONSTANT_DEFAULT       = 0.1f;
-  public static final float COULOMB_CONSTANT_DEFAULT      = 100.0f;
-  public static final float DAMPING_COEFFICIENT_DEFAULT   = 0.8f;
-  public static final float TIME_STEP_DEFAULT             = 0.4f;
+  public static final float COULOMB_CONSTANT_DEFAULT      = 500.0f;
+  public static final float DAMPING_COEFFICIENT_DEFAULT   = 0.2f;
+  public static final float TIME_STEP_DEFAULT             = 1.0f;
 
   private ArrayList<Node> nodes;
   private float totalKineticEnergy;
@@ -50,15 +50,7 @@ public class ForceDirectedGraph extends Viewport implements ControlPanel.OnValue
     return node;
   }
 
-  //@Override
-  public void set(float viewX, float viewY, float viewWidth, float viewHeight){
-    super.set(viewX, viewY, viewWidth, viewHeight);
-    if(this.dummyCenterNode != null){
-      this.dummyCenterNode.set(this.getCenterX(), this.getCenterY(), 1.0f);
-      this.initializeNodeLocations();
-    }
-  }
-  private void initializeNodeLocations(){
+  public void initializeNodeLocations(){
     float maxMass = 0.0f;
     for(int i = 0; i < this.nodes.size(); i++){
       float mass = this.nodes.get(i).getMass();
@@ -114,7 +106,6 @@ public class ForceDirectedGraph extends Viewport implements ControlPanel.OnValue
   }
 
   private float calculateTotalKineticEnergy(){ //ToDo:check the calculation in terms of Math...
-    float totalKineticEnergy = 0.0f;
     for(int i = 0; i < this.nodes.size(); i++){
       Node target = this.nodes.get(i);
       if(target == this.lockedNode)
@@ -127,41 +118,47 @@ public class ForceDirectedGraph extends Viewport implements ControlPanel.OnValue
         if(node != target){
           float dx = target.getX() - node.getX();
           float dy = target.getY() - node.getY();
-          float rSquared = dx * dx + dy * dy + 0.0001f; //to avoid zero deviation
-          float coulombForceX = this.coulombConstant * dx / rSquared;
-          float coulombForceY = this.coulombConstant * dy / rSquared;
+          float distance = sqrt(dx * dx + dy * dy);
+          float xUnit = dx / distance;
+          float yUnit = dy / distance;
+
+          float coulombForceX = this.coulombConstant * (target.getMass() * node.getMass()) / pow(distance, 2.0f) * xUnit;
+          float coulombForceY = this.coulombConstant * (target.getMass() * node.getMass()) / pow(distance, 2.0f) * yUnit;
+
           forceX += coulombForceX;
           forceY += coulombForceY;
-        }
-      }
-
-      if(this.dummyCenterNode != null){ //for centering the graph //super ad-hoc
-        float dummyDx = target.getX() - this.dummyCenterNode.getX();
-        float dummyDy = target.getY() - this.dummyCenterNode.getY();
-        if(dummyDx > 10.0f || dummyDy > 10.0f){
-          float dummyRSquared = dummyDx * dummyDx + dummyDy * dummyDy + 0.0001f; //to avoid zero deviation
-          float dummyCoulombForceX = this.coulombConstant * dummyDx / dummyRSquared;
-          float dummyCoulombForceY = this.coulombConstant * dummyDy / dummyRSquared;
-          forceX -= dummyCoulombForceX / 10.0f;
-          forceY -= dummyCoulombForceY / 10.0f;
         }
       }
 
       for(int j = 0; j < target.getSizeOfAdjacents(); j++){ //Hooke's law
         Node node = target.getAdjacentAt(j);
         float springLength = target.getNaturalSpringLengthAt(j);
-        float dx = node.getX() - target.getX();
-        float dy = node.getY() - target.getY();
+        float dx = target.getX() - node.getX();
+        float dy = target.getY() - node.getY();
+        float distance = sqrt(dx * dx + dy * dy);
+        float xUnit = dx / distance;
+        float yUnit = dy / distance;
 
-        float l = sqrt(dx * dx + dy * dy) + 0.0001f; //to avoid zero deviation
-        float springLengthX = springLength * dx / l;
-        float springLengthY = springLength * dy / l;
-        float springForceX = this.springConstant * (dx - springLengthX);
-        float springForceY = this.springConstant * (dy - springLengthY);
+        float d = distance - springLength;
+
+        float springForceX = -1 * this.springConstant * d * xUnit;
+        float springForceY = -1 * this.springConstant * d * yUnit;
 
         forceX += springForceX;
         forceY += springForceY;
       }
+
+      target.setForceToApply(forceX, forceY);
+    }
+
+    float totalKineticEnergy = 0.0f;
+    for(int i = 0; i < this.nodes.size(); i++){
+      Node target = this.nodes.get(i);
+      if(target == this.lockedNode)
+        continue;
+
+      float forceX = target.getForceX();
+      float forceY = target.getForceY();
 
       float accelerationX = forceX / target.getMass();
       float accelerationY = forceY / target.getMass();
@@ -169,8 +166,8 @@ public class ForceDirectedGraph extends Viewport implements ControlPanel.OnValue
       float velocityX = (target.getVelocityX() + this.timeStep * accelerationX) * this.dampingCoefficient;
       float velocityY = (target.getVelocityY() + this.timeStep * accelerationY) * this.dampingCoefficient;
 
-      float x = target.getX() + this.timeStep * velocityX + accelerationX * pow(this.timeStep, 2.0f) / 2.0f;
-      float y = target.getY() + this.timeStep * velocityY + accelerationY * pow(this.timeStep, 2.0f) / 2.0f;
+      float x = target.getX() + this.timeStep * target.getVelocityX() + accelerationX * pow(this.timeStep, 2.0f) / 2.0f;
+      float y = target.getY() + this.timeStep * target.getVelocityY() + accelerationY * pow(this.timeStep, 2.0f) / 2.0f;
 
       float radius = target.getDiameter() / 2.0f; //for boundary check
       if(x < this.getX() + radius)
@@ -184,8 +181,9 @@ public class ForceDirectedGraph extends Viewport implements ControlPanel.OnValue
 
       target.set(x, y);
       target.setVelocities(velocityX, velocityY);
+      target.setForceToApply(0.0f, 0.0f);
 
-      totalKineticEnergy += (target.getMass() * pow((velocityX + velocityY), 2.0f));
+      totalKineticEnergy += target.getMass() * sqrt(velocityX * velocityX + velocityY * velocityY) / 2.0f;
     }
     return totalKineticEnergy;
   }

@@ -21,16 +21,16 @@ public class ControlPanel extends Viewport{
     float sliderViewWidth = viewWidth * 0.8f;
     float sliderViewHeight = viewHeight / 4.0f;
     float sliderViewY = viewY;
-    this.springConstantSlider = new Slider("Spring Constant", ForceDirectedGraph.SPRING_CONSTANT_DEFAULT, 0.1f, 1.2f);
+    this.springConstantSlider = new Slider("Spring Constant", ForceDirectedGraph.SPRING_CONSTANT_DEFAULT, 0.1f, 0.3f);
     this.springConstantSlider.set(sliderViewX, sliderViewY, sliderViewWidth, sliderViewHeight);
     sliderViewY += sliderViewHeight;
-    this.coulombConstantSlider = new Slider("Coulomb Constant", ForceDirectedGraph.COULOMB_CONSTANT_DEFAULT, 0.0f, 1000.0f);
+    this.coulombConstantSlider = new Slider("Coulomb Constant", ForceDirectedGraph.COULOMB_CONSTANT_DEFAULT, 0.0f, 1500.0f);
     this.coulombConstantSlider.set(sliderViewX, sliderViewY, sliderViewWidth, sliderViewHeight);
     sliderViewY += sliderViewHeight;
-    this.dampingCoefficientSlider = new Slider("Damping Coefficient", ForceDirectedGraph.DAMPING_COEFFICIENT_DEFAULT, 0.1f, 0.9f);
+    this.dampingCoefficientSlider = new Slider("Damping Coefficient", ForceDirectedGraph.DAMPING_COEFFICIENT_DEFAULT, 0.1f, 0.3f);
     this.dampingCoefficientSlider.set(sliderViewX, sliderViewY, sliderViewWidth, sliderViewHeight);
     sliderViewY += sliderViewHeight;
-    this.timeStepSlider = new Slider("Time Step", ForceDirectedGraph.TIME_STEP_DEFAULT, 0.1f, 1.5f);
+    this.timeStepSlider = new Slider("Time Step", ForceDirectedGraph.TIME_STEP_DEFAULT, 0.1f, 2.0f);
     this.timeStepSlider.set(sliderViewX, sliderViewY, sliderViewWidth, sliderViewHeight);
   }
 
